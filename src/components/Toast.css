@@ -1,0 +1,115 @@
+.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    animation: rightToLeft 200ms ease-in-out;
+}
+
+.top-left {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    animation: leftToRight 200ms ease-in-out;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    animation: bottomToLeft 200ms ease-in-out
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    animation: bottomToRight 200ms ease-in-out;
+}
+
+.toast-container {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.toast-title{
+    flex: 1 1 100%;
+}
+
+.close-button{
+    float: right;
+    margin: 2px 5px;
+    padding: 4px;
+    color: green;
+    border: 1px solid green;
+    border-radius: 50%;
+    cursor:pointer;
+}
+
+@keyframes rightToLeft {
+    0%{
+        right:0;
+        top:20px;
+    }
+    50%{
+        right: 10px;
+        top: 20px;
+    }
+
+    100%{
+        right: 20px;
+        top: 20px;
+    }
+}
+
+@keyframes leftToRight {
+    0%{
+        left:0;
+        top:20px;
+    }
+    50%{
+        left: 10px;
+        top: 20px;
+    }
+
+    100%{
+        left: 20px;
+        top: 20px;
+    }
+}
+
+@keyframes bottomToLeft {
+    0%{
+        left:0;
+        bottom:20px;
+    }
+    50%{
+        left: 10px;
+        bottom: 20px;
+    }
+
+    100%{
+        left: 20px;
+        bottom: 20px;
+    }
+}
+
+@keyframes bottomToRight{
+    
+    0%{
+        right:0;
+        bottom:20px;
+    }
+    50%{
+        right: 10px;
+        bottom: 20px;
+    }
+
+    100%{
+        right: 20px;
+        bottom: 20px;
+    }
+}
