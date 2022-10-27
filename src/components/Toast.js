@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./Toast.css";
+import ReactDOM from "react-dom";
 const Toast = (props) => {
   let { toastList, setList } = props;
 
@@ -34,6 +35,14 @@ const Toast = (props) => {
     });
   }, [toastList]);
 
+  useEffect(() => {
+    return () => {
+      if (document.querySelector("#toast").children.length>0) {
+        document.querySelector('#toast').childNodes[0].remove();
+      }
+    };
+  }, []);
+
   const handleClick = (event) => {
     const list = toastList.filter((l) => l.id !== event.event.id);
     setList(list);
@@ -47,7 +56,7 @@ const Toast = (props) => {
       toast;
     const finalPosition = position ?? "top-right";
     const finalBackgroundColor = backgroundColor ?? calculateToastColor(toast);
-    return (
+    return ReactDOM.createPortal(
       <div
         className={`toast-content ${finalPosition}`}
         key={index}
@@ -68,7 +77,8 @@ const Toast = (props) => {
           <p className="toast-title">{title}</p>
           <p className="toast-description">{description}</p>
         </div>
-      </div>
+      </div>,
+      document.querySelector("#toast")
     );
   });
 };
