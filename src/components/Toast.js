@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 const Toast = (props) => {
   let { toastList, setList } = props;
 
-  const toastRef = useRef(null);
+  const intervalRef = useRef(null);
 
   const calculateToastColor = (toast) => {
     switch (toast.type) {
@@ -25,11 +25,11 @@ const Toast = (props) => {
     toastList.map((toast) => {
       if (toast.timeOut) {
         let { id, onClose, timeOut } = toast;
-        const interval = setTimeout(() => {
+        intervalRef.current= setTimeout(() => {
           handleClick({ event: { e: null, id }, closeAction: onClose });
         }, timeOut);
         return () => {
-          clearTimeout(interval);
+          clearTimeout(intervalRef.current);
         };
       }
     });
@@ -63,7 +63,6 @@ const Toast = (props) => {
         style={{
           backgroundColor: finalBackgroundColor,
         }}
-        ref={toastRef}
       >
         <button
           className="close-button"
